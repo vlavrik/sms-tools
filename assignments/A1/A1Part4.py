@@ -25,4 +25,6 @@ def downsampleAudio(inputFile, M):
         inputFile: file name of the wav file (including path)
         	M: downsampling factor (positive integer)
     """
-    ## Your code here
+    sample = wavread(inputFile)
+    resampled_sample = hopSamples(sample,M)
+    return wavwrite(resampled_sample,44100,'vibraphone-C6_downsampled.wav')
