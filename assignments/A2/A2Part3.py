@@ -10,7 +10,7 @@ to N-1.
 The input argument to the function is a numpy array x and the function should return a numpy array X which 
 is of the DFT of x.
 
-EXAMPLE: If you run your function using x = np.array([1, 2, 3, 4]), the function shoulds return the following numpy array:
+EXAMPLE: If you run your function using x = np.array([1, 2, 3, 4]), the function should return the following numpy array:
 array([10.0 + 0.0j,  -2. +2.0j,  -2.0 - 9.79717439e-16j, -2.0 - 2.0j])
 
 Note that you might not get an exact 0 in the output because of the small numerical errors due to the
@@ -25,4 +25,8 @@ def DFT(x):
         The function should return a numpy array of length N
         X (numpy array) = The N point DFT of the input sequence x
     """
-    ## Your code here
+    X = np.array([])
+    for k in range(len(x)):
+        s = np.exp(1j*2*np.pi*k/len(x) * np.arange(len(x)))
+        X = np.append(X, np.sum(x*np.conjugate(s)))
+    return X
